@@ -1,0 +1,20 @@
+{
+  "name": "angularTransmission",
+  "version": "0.0.1",
+  "authors": [
+    "Abraham White <abelincoln.white@gmail.com>"
+  ],
+  "description": "Web interface for Transmission written in angular",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0"
+  }
+}
