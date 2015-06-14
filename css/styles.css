@@ -1,0 +1,11 @@
+div.progress {
+    background-color: #607D8B;
+    height: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+md-icon.large-icon {
+    width: 48px;
+    height: 48px;
+}

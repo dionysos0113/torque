@@ -1,0 +1,24 @@
+<md-list>
+    <md-list-item class="md-3-line" ng-click="details(torrent.id)" ng-repeat="torrent in torrents">
+        <div class="md-list-item-text">
+            <div layout='row' layout-align='space-between' style='width: calc(100% - 55px);'>
+                <h3 hide-sm>{{ torrent.name }}</h3>
+                <h3 show-sm hide>{{ torrent.name | limitTo : 30}}<span ng-if='torrent.name.length >= 30'>...</span></h3>
+            </div>
+            <div style='width: calc(100% - 55px);'>
+                <p>{{ (torrent.totalSize * torrent.percentDone) | prettyBytes }}, Uploaded {{ torrent.uploadedEver | prettyBytes }}
+                    <span ng-if='torrent.eta != -1'> - {{ torrent.eta | fromNow }} remaining</span></p>
+            </div>
+            <div style='width: calc(100% - 55px);'>
+                <div style='width: 100%; background-color: #999'>
+                    <div class='progress' ng-if="torrent.percentDone * 100 != 100" style="width: {{ torrent.percentDone * 100 }}%"></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <md-icon class="md-secondary large-icon" ng-click="toggleState(torrent.status, torrent.id)" aria-label="{{ getIcon(torrent.status).label }}" md-svg-icon="{{ getIcon(torrent.status).icon }}"></md-icon>
+        <md-divider ng-if='!$last'></md-divider>
+    </md-list-item>
+    
+</md-list>
