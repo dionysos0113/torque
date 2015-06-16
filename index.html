@@ -13,7 +13,18 @@
             <md-button class="md-icon-button" aria-label="Back" ng-click='goBack()' ng-if='!areHome()'>
                 <md-icon md-svg-icon="navigation:arrow_back"></md-icon>
             </md-button>
-            <span>Torque</span>
+            <span hide-sm>{{ pageTitle }}</span>
+            <span show-sm hide>{{ pageTitle | limitTo : 20}}<span ng-if='pageTitle.length >= 20'>...</span></span>
+            <span flex></span>
+            <md-menu>
+                <md-button ng-click='$mdOpenMenu()' aria-label='menu' class='md-icon-button'>
+                    <md-icon md-svg-icon='navigation:more_vert'></md-icon>
+                </md-button>
+                <md-menu-content>
+                    <md-menu-item><md-button ng-click='refresh()'>Refresh</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-href="#/settings">Settings</md-button></md-menu-item>
+                </md-menu-content>
+            </md-menu>
         </div>
     </md-toolbar>
     <md-content ng-view md-scroll-y flex class="md-padding"></md-content>

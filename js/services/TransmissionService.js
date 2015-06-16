@@ -38,11 +38,12 @@ angular.module('torque')
         
         function moveTorrent(ids, location, copy) {
             var obj = {};
-            if (ids) {
-                obj.ids = ids;
-            }
+            obj.ids = ids;
             obj.location = location;
-            obj.move = copy;
+            obj.move = true;
+            if (copy) {
+                obj.move = copy;
+            }
             
             var postObj = {
                 "method": "torrent-set-location",

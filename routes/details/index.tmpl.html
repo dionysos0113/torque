@@ -1,1 +1,94 @@
-<pre>{{ torrents | json}}</pre>
+<p class="md-headline">Since {{ torrent.addedDate | amCalendar }}</p>
+<div layout='row' layout-align='center center'>
+    <table class='detail-table'>
+        <colgroup>
+            <col>
+            <col>
+        </colgroup>
+        <tr>
+            <td class='md-display-1'>{{ (torrent.totalSize * torrent.percentDone) | prettyBytes }}</td>
+            <td class='md-display-1'>{{ torrent.uploadedEver | prettyBytes }}</td>
+        </tr>
+        <tr>
+            <td class='md-subhead'>OF {{ torrent.totalSize | prettyBytes }}</td>
+            <td class='md-subhead'>RATIO {{ torrent.uploadRatio }}</td>
+        </tr>
+        <tr>
+            <td class='md-display-1'>
+                {{ torrent.rateDownload | prettyBytes }}/s
+                <md-icon md-svg-icon='navigation:arrow_down'></md-icon>
+            </td>
+            <td class='md-display-1'>
+                <md-icon md-svg-icon='navigation:arrow_up'></md-icon>
+                {{ torrent.rateUpload | prettyBytes }}/s
+            </td>
+        </tr>
+        <tr>
+            <td class='md-subhead'>{{ torrent.peersSendingToUs }} Seeders</td>
+            <td class='md-subhead'>{{ torrent.peersGettingFromUs }} Leechers</td>
+        </tr>
+    </table>
+</div>
+<p class="md-headline">Status: {{ torrent.status | statusFilter }}</p>
+<div layout='column'>
+    <md-subheader class='md-primary' md-no-sticky>Trackers</md-subheader>
+    <md-divider></md-divider>
+    <md-list>
+        <md-list-item ng-repeat="tracker in torrent.trackerStats">
+            <p>{{ tracker.announce }}</p>
+            <md-divider ng-if='!$last'></md-divider>
+        </md-list-item>
+    </md-list>
+    <md-subheader class='md-primary' md-no-sticky>Files</md-subheader>
+    <md-divider></md-divider>
+    <md-list>
+        <md-list-item class='md-two-line' ng-repeat="file in torrent.files">
+            <div class='md-list-item-text' flex>
+                <h3 class='md-title'>{{ file.name }}</h3>
+                <div layout='row'flex layout-align-sm='space-between' layout-align-md='space-between'>
+                    <p>{{ file.bytesCompleted | prettyBytes }} / {{ file.length | prettyBytes }}</p>
+                    <p hide-sm hide-md>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</p>
+                    <p>{{ (file.bytesCompleted / file.length * 100).toFixed(2) }}%</p>
+                </div>
+            </div>
+            <md-divider ng-if='!$last'></md-divider>
+        </md-list-item>
+    </md-list>
+</div>
+<div style='height:64px'></div>
+<!--<md-fab-toolbar class='md-right'>
+    <md-fab-trigger>
+        <md-button aria-label='menu' class='md-fab md-primary'>
+            <md-icon md-svg-icon='navigation:menu'></md-icon>
+        </md-button>
+    </md-fab-trigger>
+    
+</md-fab-toolbar>-->
+<md-toolbar style='position:fixed; bottom:0; left: 0' md-scroll-shrink>
+    <div class='md-toolbar-tools' layout='row'>
+        <div layout='row' layout-align-sm='space-around' layout-align-md='space-around' layout-align-gt-md='end' flex>
+            <md-button aria-label='refresh' class='md-icon-button'>
+                <md-icon md-svg-icon='navigation:refresh'></md-icon>
+                <md-tooltip md-direction='top'>Refresh</md-tooltip>
+            </md-button>
+            <md-button aria-label='{{ getIcon(torrent.status).label }}' class='md-icon-button' ng-click='toggleState(torrent.status, torrent.id)'>
+                <md-icon md-svg-icon='{{ getIcon(torrent.status).icon }}'></md-icon>
+                <md-tooltip md-direction='top'>{{ getIcon(torrent.status).label }}</md-tooltip>
+            </md-button>
+            <md-button aria-label='change location' class='md-icon-button' ng-click="changeDir()">
+                <md-icon md-svg-icon='file:folder'></md-icon>
+                <md-tooltip md-direction='top'>Change location</md-tooltip>
+            </md-button>
+        </div>
+            <md-menu>
+                <md-button ng-click='$mdOpenMenu()' aria-label='remove' class='md-icon-button'>
+                    <md-icon md-svg-icon='navigation:close'></md-icon>
+                    <md-tooltip md-direction='top'>Remove</md-tooltip>
+                </md-button>
+                <md-menu-content>
+                    <md-menu-item><md-button ng-click='remove(true)'>Remove and delete data</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click='remove(false)'>Remove</md-button></md-menu-item>
+                </md-menu-content>
+            </md-menu>
+    </div>
+</md-toolbar>

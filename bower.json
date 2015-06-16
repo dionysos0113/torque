@@ -16,10 +16,13 @@
   "dependencies": {
     "angular": "~1.4.0",
     "angular-route": "~1.4.0",
-    "angular-material": "~0.9.8",
+    "angular-material": "master",
     "angular-mocks": "~1.4.0",
     "moment": "~2.10.3",
     "angular-moment": "~0.10.1",
     "angular-pretty-bytes": "~1.0.1"
+  },
+  "resolutions": {
+    "angular": "~1.4.0"
   }
 }
