@@ -1,0 +1,17 @@
+<div layout='column'>
+    <h2>Limits</h2>
+    <div layout='row'>
+        <md-checkbox ng-model='data.ratio'>Stop seeding at ratio: </md-checkbox>
+        <md-input-container>
+            <label>Ratio</label>
+            <input type='number' step='0.01' name='seedRatio' ng-model="seedRatio" ng-disabled="!data.ratio" />
+        </md-input-container>
+    </div>
+    <div layout='row'>
+        <md-checkbox ng-model='data.idle'>Stop seeding if idle for N minutes: </md-checkbox>
+        <md-input-container>
+            <label>Minutes</label>
+            <input type='text' name='idleTime' ng-model="idleTime" ng-disabled="!data.idle" />
+        </md-input-container>
+    </div>
+</div>

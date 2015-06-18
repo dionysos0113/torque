@@ -1,0 +1,17 @@
+<div layout='column'>
+    <h2>Privacy</h2>
+    <md-select ng-model='encryption' placeholder='Encryption Mode'>
+        <md-option value='allow'>Allow Encryption</md-option>
+        <md-option value='prefer'>Prefer Encryption</md-option>
+        <md-option value='require'>Require Encryption</md-option>
+    </md-select>
+    <h2>Blocklist</h2>
+    <div layout='row'>
+        <md-checkbox ng-model='data.block'>Enable blocklist: </md-checkbox>
+        <md-input-container>
+            <label>Url</label>
+            <input type='url' name='blockUrl' ng-model="blockUrl" ng-disabled="!data.block" />
+        </md-input-container>
+    </div>
+    <md-checkbox ng-disabled="!data.block" ng-model='data.update'>Enable automatic updates: </md-checkbox>
+</div>

@@ -1,0 +1,25 @@
+<div layout='column'>
+    <h2>Listening Port</h2>
+    <md-input-container>
+            <label>Incoming Port</label>
+            <input type='number' ng-model='inPort' name='inPort' />
+    </md-input-container>
+    <md-checkbox ng-model='data.random'>Random port on launch</md-checkbox>
+    <md-checkbox ng-model='data.upnp'>Use router port forwarding</md-checkbox>
+    
+    <h2>Peer Limits</h2>
+    <md-input-container>
+            <label>Maximum Peers per torrent</label>
+            <input type='number' ng-model='maxEach' name='maxEach' />
+    </md-input-container>
+    <md-input-container>
+            <label>Maximum Peers overall</label>
+            <input type='number' ng-model='max' name='max' />
+    </md-input-container>
+    
+    <h2>Options</h2>
+    <md-checkbox ng-model='data.utp'>Enable uTP for peer communication</md-checkbox>
+    <md-checkbox ng-model='data.pex'>Use PEX to find more peers</md-checkbox>
+    <md-checkbox ng-model='data.dht'>Use DHT to find more peers</md-checkbox>
+    <md-checkbox ng-model='data.lpd'>Use Local Peer Discovery to find more peers</md-checkbox>
+</div>

@@ -68,13 +68,12 @@ angular.module('torque')
             return post(postObj);
         }
         
-        function addTorrent(directory, url, magnet) {
+        function addTorrent(data, url) {
             var obj = {};
-            obj["download-dir"] = directory;
             if (url) {
-                obj["filename"] = url;
-            } else if (magnet) {
-                obj["metainfo"] = magnet;
+                obj["filename"] = data;
+            } else {
+                obj["metainfo"] = data;
             }
             
             var postObj = {

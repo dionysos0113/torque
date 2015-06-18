@@ -22,7 +22,7 @@
                 </md-button>
                 <md-menu-content>
                     <md-menu-item><md-button ng-click='refresh()'>Refresh</md-button></md-menu-item>
-                    <md-menu-item><md-button ng-href="#/settings">Settings</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click='goSettings()'>Settings</md-button></md-menu-item>
                 </md-menu-content>
             </md-menu>
         </div>
@@ -45,7 +45,10 @@
 <script src="js/services/AuthInterceptor.js"></script>
 <script src="js/services/TransmissionService.js"></script>
 <script src="js/services/TorrentService.js"></script>
+<script src="js/services/FileReader.js"></script>
 <script src="routes/list/listCtrl.js"></script>
 <script src="routes/details/DetailCtrl.js"></script>
+<script src="routes/settings/SettingCtrl.js"></script>
+<script src="routes/list/addCtrl.js"></script>
 </body>
 </html>

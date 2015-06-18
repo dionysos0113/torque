@@ -20,12 +20,37 @@
                 })
                 .when('/settings', {
                     templateUrl: 'routes/settings/index.tmpl.html',
+                    controller: 'SettingCtrl',
                     parent: '/'
+                })
+                .when('/settings/general', {
+                    templateUrl: 'routes/settings/general/index.tmpl.html',
+                    parent: '/settings'
+                })
+                .when('/settings/downloading', {
+                    templateUrl: 'routes/settings/downloading/index.tmpl.html',
+                    parent: '/settings'
+                })
+                .when('/settings/network', {
+                    templateUrl: 'routes/settings/network/index.tmpl.html',
+                    parent: '/settings'
+                })
+                .when('/settings/privacy', {
+                    templateUrl: 'routes/settings/privacy/index.tmpl.html',
+                    parent: '/settings'
+                })
+                .when('/settings/seeding', {
+                    templateUrl: 'routes/settings/seeding/index.tmpl.html',
+                    parent: '/settings'
+                })
+                .when('/settings/speed', {
+                    templateUrl: 'routes/settings/speed/index.tmpl.html',
+                    parent: '/settings'
                 });
                 
             $mdThemingProvider.theme('default')
                 .primaryPalette('blue-grey')
-                .accentPalette('red');
+                .accentPalette('deep-orange');
                 
             $mdIconProvider
                 .iconSet('file', 'img/icons/file-icons.svg')
@@ -43,6 +68,10 @@
             
             $scope.areHome = function() {
                 return $location.url() == '/';
+            };
+            
+            $scope.goSettings = function() {
+                $location.url('/settings');
             };
             
             $scope.getIcon = function(state) {

@@ -1,0 +1,52 @@
+<div layout='column'>
+    <h2>Speed Limits</h2>
+    <div layout='row'>
+        <md-checkbox ng-model='data.upload'>Upload (kB/s)</md-checkbox>
+        <md-input-container>
+            <label>Upload (kB/s)</label>
+            <input type='number' name='upload' ng-model="upload" ng-disabled='!data.upload' />
+        </md-input-container>
+    </div>
+    <div layout='row'>
+        <md-checkbox ng-model='data.download'>Download (kB/s)</md-checkbox>
+        <md-input-container>
+            <label>Download (kB/s)</label>
+            <input type='number' name='download' ng-model="download" ng-disabled='!data.download' />
+        </md-input-container>
+    </div>
+    
+    <h2>Alternative Speed Limits</h2>
+    <small>Override normal speed limits manually or at scheduled times</small>
+    <md-input-container>
+        <label>Upload (kB/s)</label>
+        <input type='number' name='altUpload' ng-model="altUpload" />
+    </md-input-container>
+    <md-input-container>
+        <label>Download (kB/s)</label>
+        <input type='number' name='altDownload' ng-model="altDownload" />
+    </md-input-container>
+    <div layout='row' layout-sm='column'>
+        <md-checkbox ng-model='data.schedule'>Scheduled Times: </md-checkbox>
+        <md-input-container>
+            <label>Start</label>
+            <input type='time' name='timeStart' ng-model="timeStart" ng-disabled='!data.schedule' />
+        </md-input-container>
+        <md-input-container>
+            <label>End</label>
+            <input type='time' name='timeEnd' ng-model="timeEnd" ng-disabled='!data.schedule' />
+        </md-input-container>
+        <md-select ng-model='days' placeholder='Days' ng-disabled='!data.schedule' >
+            <md-option value='every'>Every Day</md-option>
+            <md-option value='weekdays'>Weekdays</md-option>
+            <md-option value='weekends'>Weekends</md-option>
+            <md-option value='sunday'>Sunday</md-option>
+            <md-option value='monday'>Monday</md-option>
+            <md-option value='tuesday'>Tuesday</md-option>
+            <md-option value='wednesday'>Wednesday</md-option>
+            <md-option value='thursday'>Thursday</md-option>
+            <md-option value='friday'>Friday</md-option>
+            <md-option value='saturday'>Saturday</md-option>
+        </md-select>
+    </div>
+    
+</div>

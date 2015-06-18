@@ -1,4 +1,4 @@
-<p class="md-headline">Since {{ torrent.addedDate | amCalendar }}</p>
+<p class="md-headline">Created {{ torrent.addedDate | amCalendar }}</p>
 <div layout='row' layout-align='center center'>
     <table class='detail-table'>
         <colgroup>
@@ -82,7 +82,7 @@
         </div>
             <md-menu>
                 <md-button ng-click='$mdOpenMenu()' aria-label='remove' class='md-icon-button'>
-                    <md-icon md-svg-icon='navigation:close'></md-icon>
+                    <md-icon md-svg-icon='content:clear'></md-icon>
                     <md-tooltip md-direction='top'>Remove</md-tooltip>
                 </md-button>
                 <md-menu-content>

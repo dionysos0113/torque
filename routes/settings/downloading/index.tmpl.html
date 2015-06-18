@@ -1,0 +1,43 @@
+<div layout='column'>
+    <h2>Adding</h2>
+    <div layout='row'>
+        <md-checkbox ng-model='data.auto'>Automatically add .torrent files from: </md-checkbox>
+        <md-input-container>
+            <label>Location</label>
+            <input type='text' name='autoDir' ng-model="autoDir" ng-disabled="!data.auto" />
+        </md-input-container>
+    </div>
+    <md-checkbox ng-model='data.start'>Start added torrents</md-checkbox>
+    <md-checkbox ng-model='data.trash'>Move .torrent file to the trash</md-checkbox>
+    <md-input-container>
+        <label>Download Directory</label>
+        <input type='text' name='saveDir' ng-model="saveDir" />
+    </md-input-container>
+    
+    <h2>Download Queue</h2>
+    <md-input-container>
+        <label>Maximum active downloads</label>
+        <input type='number' name='maxDown' ng-model="maxDown" />
+    </md-input-container>
+    <md-input-container>
+        <label>Downloads sharing data in the last N minutes are active: </label>
+        <input type='number' name='timeDown' ng-model="timeDown" />
+    </md-input-container>
+    
+    <h2>Incomplete</h2>
+    <md-checkbox ng-model='data.append'>Append ".part" to incomplete files' names</md-checkbox>
+    <div layout='row'>
+        <md-checkbox ng-model='data.keep'>Keep incomplete torrents in: </md-checkbox>
+        <md-input-container>
+            <label>Location</label>
+            <input type='text' name='keepDir' ng-model="keepDir" ng-disabled="!data.keep" />
+        </md-input-container>
+    </div>
+    <div layout='row'>
+        <md-checkbox ng-model='data.script'>Call script when torrent is completed: </md-checkbox>
+        <md-input-container>
+            <label>Location</label>
+            <input type='text' name='scriptFile' ng-model="scriptFile" ng-disabled="!data.script" />
+        </md-input-container>
+    </div>
+</div>
