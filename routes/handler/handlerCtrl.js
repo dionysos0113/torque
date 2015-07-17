@@ -1,6 +1,6 @@
 (function(angular) {
     angular.module('torque')
-        .controller('MagnetCtrl', ['$routeParams', '$scope', 'TransmissionService', '$mdToast', '$location',
+        .controller('HandlerCtrl', ['$routeParams', '$scope', 'TransmissionService', '$mdToast', '$location',
         function($routeParams, $scope, TService, $mdToast, $location) {
             $scope.uri = $routeParams.uri;
 

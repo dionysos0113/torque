@@ -13,9 +13,9 @@
                     templateUrl: 'routes/list/index.tmpl.html',
                     controller: 'ListCtrl'
                 })
-                .when('/magnet/:uri', {
-                    controller: 'MagnetCtrl',
-                    templateUrl: 'routes/magnet/index.tmpl.html',
+                .when('/handler/:uri', {
+                    controller: 'HandlerCtrl',
+                    templateUrl: 'routes/handler/index.tmpl.html',
                     parent: '/'
                 })
                 .when('/details/:id', {
