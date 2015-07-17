@@ -4,11 +4,11 @@
             $scope.torrent = {};
             $scope.torrent.files = [];
             $scope.pgress = [];
-            
+
             $scope.fileUpload = function(){
                 document.getElementById('fileInput').click();
             };
-            
+
             $scope.fileChange = function(){
                 $scope.$apply(function(){
                     for (var i = 0; i < document.getElementById('fileInput').files.length; i++){
@@ -47,7 +47,7 @@
                 })(0);
 
             };
-            
+
             function copyFile(file) {
                 var type = file.type;
                 var name = file.name;
@@ -57,12 +57,12 @@
 
                 return {type: type, name: name, size: size, lastModified: lastModified, data: data};
             }
-            
+
             $scope.removeFile = function(index) {
                 $scope.torrent.files.splice(index, 1);
                 $scope.pgress.splice(index, 1);
             };
-            
+
             $scope.cancel = function(reason) {
               $mdDialog.cancel(reason);
             };
@@ -78,15 +78,15 @@
                 } else {
                     $scope.cancel('no data');
                 }
-                
+
                 var promise = TService.add(torrent, url);
-                
+
                 $mdDialog.hide(promise);
             };
-            
+
             function extractData(data) {
                 return data.split(',')[1];
             }
-            
+
         }]);
 })();

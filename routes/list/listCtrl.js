@@ -9,27 +9,27 @@ angular.module('torque')
                 $scope.torrents = data;
             });
         }
-        
+
         $scope.details = function(id) {
             $location.url('/details/'+id);
         };
-        
+
         $scope.$on('$destroy', function() {
           // Make sure that the interval is destroyed too
           $interval.cancel(interval);
         });
-        
+
         $scope.$on('updateView', function() {
             query();
         });
-        
+
         $scope.addTorrent = function(ev) {
                 var dialog = $mdDialog.show({
                     targetEvent: ev,
                     templateUrl: 'routes/list/add.tmpl.html',
                     controller: 'AddCtrl'
                 });
-                
+
                 dialog.then(function(data) {
                     if (data.result == 'success') {
                         if (data.arguments["torrent-added"]) {

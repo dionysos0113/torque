@@ -8,7 +8,7 @@ angular.module('torque')
         return {
             request: addToken
         };
-        
+
         function addToken(config) {
             var token = AuthService.token;
             if (token) {
@@ -24,11 +24,11 @@ angular.module('torque')
             responseError: function(rejection) {
                 if (rejection.status) {
                     switch (rejection.status) {
-                        case 409: 
+                        case 409:
                         AuthService.token = rejection.headers('X-Transmission-Session-Id');
                     }
                 }
-                
+
                 return $q.reject(rejection);
             }
         };

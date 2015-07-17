@@ -7,11 +7,16 @@
         .config(['$routeProvider', '$mdThemingProvider', '$httpProvider', '$mdIconProvider', function($routeProvider, $mdThemingProvider, $httpProvider, $mdIconProvider) {
             $httpProvider.interceptors.push('ErrorInterceptor');
             $httpProvider.interceptors.push('AuthInterceptor');
-            
+
             $routeProvider
                 .when('/', {
                     templateUrl: 'routes/list/index.tmpl.html',
                     controller: 'ListCtrl'
+                })
+                .when('/magnet/:uri', {
+                    controller: 'MagnetCtrl',
+                    templateUrl: 'routes/magnet/index.tmpl.html',
+                    parent: '/'
                 })
                 .when('/details/:id', {
                     templateUrl: 'routes/details/index.tmpl.html',
@@ -25,6 +30,7 @@
                 })
                 .when('/settings/general', {
                     templateUrl: 'routes/settings/general/index.tmpl.html',
+                    controller: 'GeneralCtrl',
                     parent: '/settings'
                 })
                 .when('/settings/downloading', {
@@ -47,11 +53,11 @@
                     templateUrl: 'routes/settings/speed/index.tmpl.html',
                     parent: '/settings'
                 });
-                
+
             $mdThemingProvider.theme('default')
                 .primaryPalette('blue-grey')
                 .accentPalette('deep-orange');
-                
+
             $mdIconProvider
                 .iconSet('file', 'img/icons/file-icons.svg')
                 .iconSet('action', 'img/icons/action-icons.svg')
@@ -65,15 +71,15 @@
             $scope.goBack = function() {
                 $location.url($route.current.$$route.parent);
             };
-            
+
             $scope.areHome = function() {
                 return $location.url() == '/';
             };
-            
+
             $scope.goSettings = function() {
                 $location.url('/settings');
             };
-            
+
             $scope.getIcon = function(state) {
                 switch (state) {
                     case 0:
@@ -88,7 +94,7 @@
                         break;
                 }
             };
-            
+
             $scope.toggleState = function(state, id) {
                 switch (state) {
                     case 0:
@@ -113,13 +119,13 @@
                         break;
                 }
             };
-            
+
             $scope.refresh = function() {
                 $scope.$broadcast('updateView');
             };
-            
+
             $scope.pageTitle = 'Torque';
-            
+
             $scope.setTitle = function(title) {
                 if (title) {
                     $scope.pageTitle = title;
@@ -131,10 +137,10 @@
         .filter('fromNow', function() {
             return function(seconds) {
                 if (seconds == -1) return "";
-                
+
                 var now = new Date();
                 var then = moment(new Date(now.getTime() + (1000 * seconds)));
-                
+
                 return then.toNow(true);
             };
         })

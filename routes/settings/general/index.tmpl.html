@@ -1,9 +1,9 @@
 <div layout='column'>
     <h2>General</h2>
-    <md-checkbox ng-model='data.magnet'>Enable magnet protocol handler</md-checkbox>
+    <md-button class='md-primary' ng-click='magnetClick()'>Enable magnet protocol handler</md-button>
     <md-checkbox ng-model='data.torrent'>Enable .torrent content handler</md-checkbox>
     <md-input-container>
             <label>Refresh Rate</label>
-            <input type='number' ng-model='refresh' name='refresh' />
+            <input type='number' ng-model='data.refresh' name='refresh' />
     </md-input-container>
 </div>

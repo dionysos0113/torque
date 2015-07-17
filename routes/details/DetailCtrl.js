@@ -2,7 +2,7 @@ angular.module('torque')
     .controller('DetailCtrl', ['$scope','$routeParams', 'TransmissionService', '$interval', '$mdDialog', '$location', 
         function($scope, $routeParams, TService, $interval, $mdDialog, $location) {
             var id = +$routeParams.id;      //the plus coerces it to a number
-            
+
             var fields = [
                 "id",
                 "name",
@@ -30,7 +30,7 @@ angular.module('torque')
                 "peersGettingFromUs",   //leechers
                 "peersSendingToUs"  //seeders
             ];
-            
+
             query();
             var interval = $interval(query, 2000);
             function query() {
@@ -39,21 +39,21 @@ angular.module('torque')
                     $scope.setTitle($scope.torrent.name);
                 });
             }
-            
+
             $scope.remove = function(localData) {
                 if (typeof localData == 'undefined') {
                     localData = false;
                 }
-                
+
                 TService.remove(id, localData).then(function(data) {
                     $location.url('/');
                 });
             };
-            
+
             $scope.changeDir = function(ev) {
                 var dialog = $mdDialog.show({
                     targetEvent:ev,
-                    template: 
+                    template:
                         '<md-dialog>' +
                         '   <md-dialog-content>' +
                         '       <md-input-container>' +
@@ -81,9 +81,9 @@ angular.module('torque')
                           $mdDialog.hide($scope.location);
                         };
                     }]
-          
+
                 });
-                
+
                 dialog.then(function(dir) {
                     if (dir !== $scope.torrent.downloadDir) {
                         TService.move(id, dir).then(function() {
@@ -108,12 +108,12 @@ angular.module('torque')
                     }
                 });
             };
-            
+
             $scope.$on('$destroy', function() {
               // Make sure that the interval is destroyed too
               $interval.cancel(interval);
             });
-            
+
             $scope.$on('updateView', function() {
                 query();
             });
